@@ -1,0 +1,20 @@
+---
+title: "Natural Disaster Final Project"
+author: "Sully, Adi, and Max"
+output: html_document
+---
+
+```{r loading_initial_packages}
+library(tidyverse)
+library(broom)
+library(ggplot2)
+library(leaflet)
+library(sf)
+library(leafsync)
+```
+```{r importing_data}
+natural_disasters <- read.csv(file = "DISASTERS/1900_2021_DISASTERS.xlsx - emdat data.csv")
+
+glimpse(natural_disasters)
+```
+
