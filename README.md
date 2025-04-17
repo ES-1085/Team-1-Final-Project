@@ -1,0 +1,1 @@
+This project aims to visualize the climate change induced increase in natural disaster frequency over the last century or so. We created a handful of visualizations that illuminate this trend and included info on the breakdown of natural disaster types by continent, as well as a continent's Community Preparedness Index (CPI). 
