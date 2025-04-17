@@ -46,9 +46,9 @@ ggsave("frequency_of_disaster_by_continent.png", bg = "transparent")
 ggplot(natural_disasters, aes(x = Year)) +
   geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
   facet_wrap(~ Disaster.Subgroup) +
-  scale_color_viridis_b()
+  scale_color_viridis_b() +
   labs(title = "Disaster Years by Subgroup", x = "Year", y = "Count") +
   theme_minimal()
-ggsave("frequency_of_disaster_per_subgroup.png", bg = "transparent")
+ggsave("frequency_of_disaster_by_subgroup.png", bg = "transparent")
 ```
 
