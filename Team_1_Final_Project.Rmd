@@ -13,8 +13,45 @@ library(sf)
 library(leafsync)
 ```
 ```{r importing_data}
-natural_disasters <- read.csv(file = "DISASTERS/1900_2021_DISASTERS.xlsx - emdat data.csv")
+natural_disasters <- read.csv(file = "data/1900_2021_DISASTERS.xlsx - emdat data.csv")
 
 glimpse(natural_disasters)
+```
+
+```{r initial_summary_statistics}
+summary(natural_disasters)
+str(natural_disasters)
+```
+
+
+```{r disaster_types_frequency_by_continent}
+new_disasters <- natural_disasters %>%
+  filter(Disaster.Type %in% c("Epidemic", "Earthquake", "Flood", "Storm", "Landslide"))
+
+ggplot(new_disasters, aes(x = Disaster.Type)) +
+  geom_bar(fill = "steelblue") +
+  scale_color_viridis_b() +
+  facet_wrap(~ Continent, scales = "free_y") +
+  labs(
+    title = "Frequency of Disaster Types by Continent",
+    x = "Disaster Type",
+    y = "Count"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+ggsave("transparent_disaster_plot.png", bg = "transparent")
+```
+
+```{r}
+ggplot(natural_disasters, aes(x = Year, y = count, fill = Disaster.Subgroup)) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  facet_wrap(~ Disaster.Subgroup, scales = "free_y") +  
+  labs(
+    title = "Frequency of Disasters by Subgroup Over Time",
+    x = "Year",
+    y = "Count"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
